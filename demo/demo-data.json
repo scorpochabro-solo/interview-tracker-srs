@@ -1,0 +1,275 @@
+{
+  "version": 1,
+  "applications": [
+    {
+      "id": "12f72028-f3b9-4d40-ab7b-fc91e401377b",
+      "company": "Яндекс",
+      "position": "Junior Frontend",
+      "appliedAt": "2026-09-15",
+      "url": "https://hh.ru/vacancy/101",
+      "source": "hh",
+      "salary": "120–160 тыс. ₽",
+      "contactId": "3f9c4283-224f-4009-84d1-69ea2a2fead0",
+      "notes": "Команда поиска, стек React + TypeScript",
+      "status": "interview",
+      "history": [
+        {
+          "status": "applied",
+          "at": "2026-09-29T13:50:29.513Z"
+        },
+        {
+          "status": "interview",
+          "at": "2026-09-29T13:52:07.999Z"
+        }
+      ],
+      "createdAt": "2026-09-29T13:50:29.513Z",
+      "updatedAt": "2026-09-29T13:52:07.999Z"
+    },
+    {
+      "id": "26ca71f5-7a7d-4dfd-896f-a539d6d259c9",
+      "company": "Ozon",
+      "position": "Frontend-разработчик",
+      "appliedAt": "2026-09-18",
+      "url": "",
+      "source": "habr",
+      "salary": "",
+      "contactId": "48ef7001-1449-4ca5-8938-0632fbcc9489",
+      "notes": "",
+      "status": "interview",
+      "history": [
+        {
+          "status": "applied",
+          "at": "2026-09-29T13:51:16.003Z"
+        },
+        {
+          "status": "interview",
+          "at": "2026-09-29T13:52:11.997Z"
+        }
+      ],
+      "createdAt": "2026-09-29T13:51:16.003Z",
+      "updatedAt": "2026-09-29T13:52:11.997Z"
+    },
+    {
+      "id": "0e3b0471-a1dd-4d51-90a5-b48cf6178057",
+      "company": "Т-Банк",
+      "position": "Junior React-разработчик",
+      "appliedAt": "2026-09-20",
+      "url": "https://www.tbank.ru/career/",
+      "source": "site",
+      "salary": "",
+      "contactId": null,
+      "notes": "",
+      "status": "interview",
+      "history": [
+        {
+          "status": "applied",
+          "at": "2026-09-29T13:51:18.000Z"
+        },
+        {
+          "status": "test",
+          "at": "2026-09-29T13:51:46.995Z"
+        },
+        {
+          "status": "interview",
+          "at": "2026-09-29T13:52:15.894Z"
+        }
+      ],
+      "createdAt": "2026-09-29T13:51:18.000Z",
+      "updatedAt": "2026-09-29T13:52:15.894Z"
+    },
+    {
+      "id": "97273b1d-256a-4b5c-8a72-94408188e748",
+      "company": "VK",
+      "position": "Стажёр-разработчик",
+      "appliedAt": "2026-09-05",
+      "url": "",
+      "source": "telegram",
+      "salary": "",
+      "contactId": null,
+      "notes": "",
+      "status": "interview",
+      "history": [
+        {
+          "status": "applied",
+          "at": "2026-09-29T13:51:19.997Z"
+        },
+        {
+          "status": "test",
+          "at": "2026-09-29T13:51:45.353Z"
+        },
+        {
+          "status": "interview",
+          "at": "2026-09-29T13:52:13.997Z"
+        }
+      ],
+      "createdAt": "2026-09-29T13:51:19.997Z",
+      "updatedAt": "2026-09-29T13:52:13.997Z"
+    },
+    {
+      "id": "29d1f9c0-7c79-4e92-8628-c4939db5c8df",
+      "company": "Авито",
+      "position": "Frontend-разработчик (стажировка)",
+      "appliedAt": "2026-09-02",
+      "url": "",
+      "source": "hh",
+      "salary": "80 тыс. ₽",
+      "contactId": null,
+      "notes": "",
+      "status": "rejected",
+      "history": [
+        {
+          "status": "applied",
+          "at": "2026-09-29T13:51:34.848Z"
+        },
+        {
+          "status": "rejected",
+          "at": "2026-09-29T13:51:45.996Z"
+        }
+      ],
+      "createdAt": "2026-09-29T13:51:34.848Z",
+      "updatedAt": "2026-09-29T13:51:45.996Z"
+    },
+    {
+      "id": "91c2ff35-0d99-40e6-9e79-e82b2cdf24cb",
+      "company": "Сбер",
+      "position": "Разработчик интерфейсов",
+      "appliedAt": "2026-09-24",
+      "url": "",
+      "source": "referral",
+      "salary": "",
+      "contactId": null,
+      "notes": "",
+      "status": "applied",
+      "history": [
+        {
+          "status": "applied",
+          "at": "2026-09-29T13:51:34.982Z"
+        }
+      ],
+      "createdAt": "2026-09-29T13:51:34.982Z",
+      "updatedAt": "2026-09-29T13:51:34.982Z"
+    }
+  ],
+  "interviews": [
+    {
+      "id": "bc955b1f-921d-4ff0-bec2-196877ac11eb",
+      "applicationId": "12f72028-f3b9-4d40-ab7b-fc91e401377b",
+      "date": "2026-09-30",
+      "time": "16:00",
+      "stage": "hr",
+      "format": "online",
+      "place": "https://telemost.yandex.ru/j/5566778899",
+      "interviewer": "Анна Смирнова",
+      "result": "pending",
+      "notes": "",
+      "createdAt": "2026-09-29T13:52:07.999Z"
+    },
+    {
+      "id": "3ccf055c-99e2-4664-b40b-0ac224bac06b",
+      "applicationId": "26ca71f5-7a7d-4dfd-896f-a539d6d259c9",
+      "date": "2026-09-29",
+      "time": "19:52",
+      "stage": "tech",
+      "format": "office",
+      "place": "Москва, Пресненская наб., 10, БЦ «Башня на набережной»",
+      "interviewer": "Тимлид фронтенда",
+      "result": "pending",
+      "notes": "",
+      "createdAt": "2026-09-29T13:52:11.997Z"
+    },
+    {
+      "id": "eb67b470-7c54-409a-810b-b67f6bb8d5ab",
+      "applicationId": "97273b1d-256a-4b5c-8a72-94408188e748",
+      "date": "2026-10-06",
+      "time": "14:00",
+      "stage": "review",
+      "format": "online",
+      "place": "https://vk.com/call/join/abc",
+      "interviewer": "",
+      "result": "pending",
+      "notes": "",
+      "createdAt": "2026-09-29T13:52:13.997Z"
+    },
+    {
+      "id": "716a0fc4-098a-4814-8853-b870dd2612dd",
+      "applicationId": "0e3b0471-a1dd-4d51-90a5-b48cf6178057",
+      "date": "2026-09-25",
+      "time": "12:30",
+      "stage": "hr",
+      "format": "phone",
+      "place": "",
+      "interviewer": "",
+      "result": "passed",
+      "notes": "Спрашивали про мотивацию и ожидания по зарплате",
+      "createdAt": "2026-09-29T13:52:15.894Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "15ae1eba-303a-4d1e-9d47-a094ebd3460f",
+      "title": "Повторить замыкания и event loop",
+      "dueDate": null,
+      "applicationId": "12f72028-f3b9-4d40-ab7b-fc91e401377b",
+      "done": true,
+      "createdAt": "2026-09-29T13:52:29.561Z"
+    },
+    {
+      "id": "2476eab4-673b-4d05-be40-f9feaa31eff3",
+      "title": "Прочитать про продукты команды поиска",
+      "dueDate": null,
+      "applicationId": "12f72028-f3b9-4d40-ab7b-fc91e401377b",
+      "done": false,
+      "createdAt": "2026-09-29T13:52:29.630Z"
+    },
+    {
+      "id": "dd8dc9d4-adbe-47ac-970d-b993155bc894",
+      "title": "Подготовить 3 вопроса про процессы в команде",
+      "dueDate": null,
+      "applicationId": "12f72028-f3b9-4d40-ab7b-fc91e401377b",
+      "done": false,
+      "createdAt": "2026-09-29T13:52:29.697Z"
+    },
+    {
+      "id": "1839d907-e2d3-4880-b297-f926a9b91c18",
+      "title": "Решить 5 задач на LeetCode по массивам",
+      "dueDate": "2026-09-27",
+      "applicationId": "97273b1d-256a-4b5c-8a72-94408188e748",
+      "done": false,
+      "createdAt": "2026-09-29T13:52:30.083Z"
+    },
+    {
+      "id": "afee0e61-08f9-465b-a659-5d3a77870026",
+      "title": "Обновить резюме: добавить pet-проект",
+      "dueDate": "2026-10-03",
+      "applicationId": null,
+      "done": false,
+      "createdAt": "2026-09-29T13:52:30.212Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "3f9c4283-224f-4009-84d1-69ea2a2fead0",
+      "name": "Анна Смирнова",
+      "company": "Яндекс",
+      "role": "IT-рекрутер",
+      "phone": "+7 (999) 123-45-67",
+      "email": "anna.smirnova@yandex-team.ru",
+      "telegram": "anna_hr",
+      "lastContactAt": "2026-09-10",
+      "notes": "Пишет в Telegram быстрее, чем на почту",
+      "createdAt": "2026-09-29T13:50:42.999Z"
+    },
+    {
+      "id": "48ef7001-1449-4ca5-8938-0632fbcc9489",
+      "name": "Борис Ковалёв",
+      "company": "Ozon",
+      "role": "HR BP",
+      "phone": "",
+      "email": "b.kovalev@ozon.ru",
+      "telegram": "",
+      "lastContactAt": "2026-09-25",
+      "notes": "",
+      "createdAt": "2026-09-29T13:50:45.995Z"
+    }
+  ]
+}
