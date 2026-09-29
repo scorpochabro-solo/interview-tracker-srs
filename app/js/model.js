@@ -224,15 +224,14 @@ export function nextInterview(interviews, applicationId, now = new Date()) {
   return interviewsOf(interviews, applicationId).find((item) => interviewStart(item) >= now) ?? null;
 }
 
-// Собеседования, до которых осталось меньше REMINDER_HOURS часов.
+// До собеседования осталось меньше REMINDER_HOURS часов, и оно ещё не началось.
+export function isReminderDue(interview, now = new Date()) {
+  const minutes = minutesUntil(interviewStart(interview), now);
+  return minutes >= 0 && minutes < REMINDER_HOURS * 60;
+}
+
 export function upcomingReminders(interviews, now = new Date()) {
-  const limit = REMINDER_HOURS * 60;
-  return interviews
-    .filter((item) => {
-      const minutes = minutesUntil(interviewStart(item), now);
-      return minutes >= 0 && minutes < limit;
-    })
-    .sort(byStart);
+  return interviews.filter((item) => isReminderDue(item, now)).sort(byStart);
 }
 
 // ---------- Задачи по подготовке ----------
