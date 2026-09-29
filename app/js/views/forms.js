@@ -29,7 +29,7 @@ function formSheet({ form, id, head, fields, submitLabel, hasBack }) {
         <p class="form-note"><span aria-hidden="true">*</span> — обязательные поля</p>
       </div>
       <footer class="sheet__foot">
-        <button type="button" class="btn btn--ghost" data-action="${hasBack ? 'modal-back' : 'close-modal'}">Отмена</button>
+        <button type="button" class="btn btn--ghost" data-action="cancel-form">Отмена</button>
         <button type="submit" class="btn btn--primary">${submitLabel}</button>
       </footer>
     </form>`;

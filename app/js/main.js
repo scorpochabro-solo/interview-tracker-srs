@@ -70,6 +70,7 @@ let ui = {
 
 let shownModal = null; // modalKey окна, которое сейчас на экране
 let returnFocusKey = null; // куда вернуть фокус после закрытия окна
+let formBaseline = null; // значения формы в момент открытия — чтобы понять, меняли ли их
 let currentDay = new Date().toDateString();
 let toastTimer = null;
 
@@ -117,11 +118,20 @@ function focusModal() {
   target?.focus();
 }
 
+function readForm() {
+  const form = els.modalContent.querySelector('form[data-form]');
+  return form ? Object.fromEntries(new FormData(form)) : null;
+}
+
 // Если форма открыта, сохраняем введённое в draft, чтобы перерисовка его не стёрла.
 function syncDraft() {
   if (!isFormModal(ui.modal) || modalKey(ui.modal) !== shownModal) return;
-  const form = els.modalContent.querySelector('form[data-form]');
-  if (form) setUi({ modal: { ...ui.modal, draft: Object.fromEntries(new FormData(form)) } });
+  const draft = readForm();
+  if (draft) setUi({ modal: { ...ui.modal, draft } });
+}
+
+function isFormDirty() {
+  return isFormModal(ui.modal) && JSON.stringify(readForm()) !== formBaseline;
 }
 
 // Рисует окно и сообщает, что с ним произошло: opened / changed / same / closed / none.
@@ -159,6 +169,7 @@ function render() {
   const modalChange = renderModalLayer(now);
 
   if (modalChange === 'opened' || modalChange === 'changed') {
+    formBaseline = JSON.stringify(readForm());
     restoreScroll(snapshot, (key) => key !== 'sheet');
     focusModal();
   } else if (modalChange === 'closed') {
@@ -166,10 +177,16 @@ function render() {
     if (!focusByKey(returnFocusKey)) els.main.focus();
   } else {
     restoreScroll(snapshot);
-    if (!snapshot.active?.isConnected && !focusByKey(snapshot.focusKey, snapshot.selection) && els.modal.open) {
-      focusModal();
-    }
+    restoreFocus(snapshot);
   }
+}
+
+// Элемент с фокусом перерисовали: ищем его копию, а если её нет (запись удалили) —
+// ставим фокус на окно или на раздел, чтобы он не терялся на <body>.
+function restoreFocus(snapshot) {
+  if (snapshot.active?.isConnected || focusByKey(snapshot.focusKey, snapshot.selection)) return;
+  if (els.modal.open) focusModal();
+  else els.main.focus();
 }
 
 // ---------- Изменение данных ----------
@@ -242,6 +259,12 @@ function closeModal() {
 function goBack() {
   setUi({ modal: ui.modal?.back ?? null });
   render();
+}
+
+// Крестик, стрелка «назад» и Esc в форме: если что-то уже введено — сначала спросить.
+async function leaveForm(leave) {
+  if (isFormDirty() && !(await ask('Закрыть форму? Введённые данные не сохранятся.', 'Закрыть'))) return;
+  leave();
 }
 
 // ---------- Резервная копия ----------
@@ -320,8 +343,9 @@ const CLICK = {
     (s) => model.removeContact(s, id),
     { message: 'Контакт удалён' },
   ),
-  'close-modal': closeModal,
-  'modal-back': goBack,
+  'close-modal': () => leaveForm(closeModal),
+  'modal-back': () => leaveForm(goBack),
+  'cancel-form': () => (ui.modal?.back ? goBack() : closeModal()),
   export: exportBackup,
   import: () => els.importFile.click(),
   'dismiss-storage': () => {
@@ -431,6 +455,13 @@ document.addEventListener('submit', (event) => {
   else submitForm(form);
 });
 
+// Esc в форме работает как «Отмена», но не теряет введённое без вопроса.
+els.modal.addEventListener('cancel', (event) => {
+  if (!isFormModal(ui.modal)) return;
+  event.preventDefault();
+  leaveForm(ui.modal.back ? goBack : closeModal);
+});
+
 // Esc или закрытие окна средствами браузера.
 els.modal.addEventListener('close', () => {
   if (!ui.modal) return;
@@ -473,7 +504,7 @@ setInterval(() => {
   }
   const snapshot = captureView();
   renderChrome(new Date());
-  if (!snapshot.active?.isConnected) focusByKey(snapshot.focusKey);
+  restoreFocus(snapshot);
 }, CLOCK_MS);
 
 render();

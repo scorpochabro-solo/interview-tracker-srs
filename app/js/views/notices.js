@@ -44,7 +44,7 @@ function storageNotice(problem) {
         ${problem.message ? html`<p class="muted">Причина: ${problem.message}</p>` : ''}
         ${problem.backupKey ? html`<p class="muted">Ключ копии: <code>${problem.backupKey}</code></p>` : ''}
       </div>
-      ${iconButton({ action: 'dismiss-storage', iconName: 'close', label: 'Скрыть сообщение' })}
+      ${iconButton({ action: 'dismiss-storage', iconName: 'close', label: 'Скрыть сообщение', focusKey: 'dismiss-storage' })}
     </section>`;
 }
 

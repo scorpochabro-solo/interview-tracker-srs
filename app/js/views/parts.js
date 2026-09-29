@@ -119,7 +119,7 @@ export function meetingItem(interview, { now, app = null, ctx }) {
         </span>
         <span class="meeting__actions">
           ${iconButton({ action: 'edit-interview', iconName: 'edit', label: 'Изменить собеседование', data: { id: interview.id }, focusKey: `edit-${key}` })}
-          ${iconButton({ action: 'delete-interview', iconName: 'trash', label: 'Удалить собеседование', data: { id: interview.id }, extraClass: 'icon-btn--danger' })}
+          ${iconButton({ action: 'delete-interview', iconName: 'trash', label: 'Удалить собеседование', data: { id: interview.id }, focusKey: `delete-${key}`, extraClass: 'icon-btn--danger' })}
         </span>
       </div>
     </li>`;
@@ -139,7 +139,7 @@ export function taskItem(task, { now, ctx }) {
       </span>
       <span class="task__actions">
         ${iconButton({ action: 'edit-task', iconName: 'edit', label: `Изменить задачу «${task.title}»`, data: { id: task.id }, focusKey: `edit-${key}` })}
-        ${iconButton({ action: 'delete-task', iconName: 'trash', label: `Удалить задачу «${task.title}»`, data: { id: task.id }, extraClass: 'icon-btn--danger' })}
+        ${iconButton({ action: 'delete-task', iconName: 'trash', label: `Удалить задачу «${task.title}»`, data: { id: task.id }, focusKey: `delete-${key}`, extraClass: 'icon-btn--danger' })}
       </span>
     </li>`;
 }

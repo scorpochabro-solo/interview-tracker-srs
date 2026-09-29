@@ -30,7 +30,7 @@ function contactCard(state, contact, now) {
         </div>
         <span class="contact__actions">
           ${iconButton({ action: 'edit-contact', iconName: 'edit', label: `Изменить контакт ${contact.name}`, data: { id: contact.id }, focusKey: `edit-contact-${contact.id}` })}
-          ${iconButton({ action: 'delete-contact', iconName: 'trash', label: `Удалить контакт ${contact.name}`, data: { id: contact.id }, extraClass: 'icon-btn--danger' })}
+          ${iconButton({ action: 'delete-contact', iconName: 'trash', label: `Удалить контакт ${contact.name}`, data: { id: contact.id }, focusKey: `delete-contact-${contact.id}`, extraClass: 'icon-btn--danger' })}
         </span>
       </header>
       ${channels(contact)}
