@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Трекер собеседований</title>
+  <meta name="description" content="Учёт откликов на вакансии, собеседований, задач по подготовке и контактов HR">
+  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/onest-vf.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/controls.css">
+  <link rel="stylesheet" href="css/views.css">
+  <link rel="stylesheet" href="css/sheet.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <div class="rule-grid" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="app-header">
+    <div class="shell app-header__inner">
+      <a class="brand" href="#board">Трекер <em>собеседований</em><span class="brand__mark" aria-hidden="true"></span></a>
+      <nav class="app-nav" id="nav" aria-label="Разделы"></nav>
+    </div>
+  </header>
+
+  <div class="shell notices" id="notices"></div>
+
+  <main class="shell app-main" id="main" tabindex="-1">
+    <noscript><p class="empty">Для работы трекера нужен включённый JavaScript.</p></noscript>
+  </main>
+
+  <dialog class="sheet" id="modal" aria-labelledby="modal-title">
+    <div class="sheet__inner" id="modal-content"></div>
+  </dialog>
+
+  <dialog class="confirm" id="confirm" aria-labelledby="confirm-text">
+    <form method="dialog" class="confirm__form">
+      <p class="label confirm__label">Подтверждение</p>
+      <p class="confirm__text" id="confirm-text"></p>
+      <div class="confirm__actions">
+        <button type="submit" class="btn btn--ghost" value="no" autofocus>Отмена</button>
+        <button type="submit" class="btn btn--danger" value="yes" id="confirm-ok">Удалить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+</body>
+</html>
