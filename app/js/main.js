@@ -315,6 +315,11 @@ function nameOf(list, id, describe) {
 
 const CLICK = {
   'new-application': () => openModal({ kind: 'application-form' }),
+  'clear-application-search': () => {
+    setUi({ search: '' });
+    render();
+    focusByKey('search');
+  },
   'open-application': ({ id }) => openModal({ kind: 'application', id }),
   'edit-application': ({ id }) => openModal({ kind: 'application-form', id, back: ui.modal }),
   'delete-application': ({ id }) => confirmAndApply(
