@@ -1,0 +1,89 @@
+@startuml
+!pragma layout smetana
+left to right direction
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam nodesep 24
+skinparam ranksep 48
+skinparam classAttributeIconSize 0
+skinparam ArrowColor #405066
+skinparam classBackgroundColor #F7FAFF
+skinparam classBorderColor #40648B
+skinparam classFontColor #18283B
+hide circle
+hide empty methods
+title ER-диаграмма трекера собеседований
+
+entity "Компании" as companies {
+  * id : integer <<PK>>
+  --
+  * name : text <<UQ>>
+}
+entity "Контакты HR" as contacts {
+  * id : integer <<PK>>
+  --
+  company_id : integer <<FK>>
+  * full_name : text
+  role : text
+  phone : text
+  email : text
+  telegram : text
+  last_contact_on : date
+  notes : text
+}
+entity "Отклики" as applications {
+  * id : integer <<PK>>
+  --
+  * company_id : integer <<FK>>
+  contact_id : integer <<FK>>
+  * position : text
+  * applied_on : date
+  vacancy_url : text
+  source : text
+  salary_expectation : text
+  notes : text
+}
+entity "Собеседования" as interviews {
+  * id : integer <<PK>>
+  --
+  * application_id : integer <<FK>>
+  * scheduled_on : date
+  * scheduled_time : time
+  * stage : text
+  * format : text
+  place : text
+  interviewer : text
+  * result : text
+  notes : text
+}
+entity "Задачи подготовки" as tasks {
+  * id : integer <<PK>>
+  --
+  application_id : integer <<FK>>
+  * title : text
+  due_on : date
+  * done : integer
+}
+entity "История статусов" as history {
+  * id : integer <<PK>>
+  --
+  * application_id : integer <<FK>>
+  * status_code : text <<FK>>
+  * changed_at : datetime
+}
+entity "Справочник статусов" as statuses {
+  * code : text <<PK>>
+  --
+  * title : text <<UQ>>
+}
+
+companies ||--o{ applications
+companies |o--o{ contacts
+contacts |o--o{ applications
+applications ||--o{ interviews
+applications |o--o{ tasks
+applications ||--|{ history
+statuses ||--o{ history
+@enduml
