@@ -1,0 +1,34 @@
+@startuml
+title Удаление отклика
+skinparam shadowing false
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 16
+skinparam sequenceArrowColor #40527A
+
+actor "Соискатель" as U
+boundary "Карточка отклика" as UI
+control "Контроллер (main.js)" as C
+participant "Модель (model.js)" as M
+database "localStorage" as S
+
+U -> UI : Нажимает «Удалить»
+UI -> C : Запрос на удаление отклика
+C --> UI : Открыть подтверждение и предупредить\nоб удалении встреч и задач
+alt пользователь отменяет
+  U -> UI : Нажимает «Отмена» или Esc
+  UI --> C : Подтверждение не получено
+  C --> UI : Закрыть подтверждение
+else пользователь подтверждает
+  U -> UI : Подтверждает удаление
+  UI -> C : Подтверждение получено
+  C -> M : removeApplication(состояние, ID)
+  M -> M : Удалить отклик, его встречи и задачи
+  M --> C : Новое состояние
+  C -> S : Сохранить снимок состояния
+  S --> C : Результат записи
+  C --> UI : Закрыть карточку и обновить доску
+  opt запись в браузер не удалась
+    C --> UI : Показать ошибку сохранения
+  end
+end
+@enduml

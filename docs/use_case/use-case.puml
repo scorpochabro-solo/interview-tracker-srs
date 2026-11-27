@@ -1,0 +1,43 @@
+@startuml
+!pragma layout smetana
+left to right direction
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 16
+skinparam ArrowColor #40527A
+skinparam usecaseBackgroundColor #EEF3FF
+skinparam usecaseBorderColor #4962A0
+
+title Трекер собеседований — варианты использования
+actor "Соискатель" as Candidate
+rectangle "Трекер собеседований" {
+  usecase "Открыть трекер" as Open
+  usecase "Получить напоминание\nо ближайшей встрече" as Reminder
+  usecase "Добавить или изменить\nотклик" as Application
+  usecase "Найти отклики по\nкомпании или должности" as Search
+  usecase "Изменить статус\nотклика" as Change
+  usecase "Запланировать или изменить\nсобеседование" as Interview
+  usecase "Удалить отклик\nили собеседование" as Delete
+  usecase "Проверить поля формы" as Validate
+  usecase "Подтвердить удаление" as Confirm
+  usecase "Вести задачи подготовки" as Tasks
+  usecase "Управлять контактами HR" as Contacts
+  usecase "Посмотреть сводку" as Summary
+  usecase "Скачать или загрузить\nрезервную копию" as Backup
+}
+Candidate -- Open
+Candidate -- Application
+Candidate -- Search
+Candidate -- Change
+Candidate -- Interview
+Candidate -- Delete
+Candidate -- Tasks
+Candidate -- Contacts
+Candidate -- Summary
+Candidate -- Backup
+Application ..> Validate : <<include>>
+Interview ..> Validate : <<include>>
+Delete ..> Confirm : <<include>>
+Reminder ..> Open : <<extend>>\n[до встречи меньше 24 часов]
+@enduml
