@@ -56,7 +56,10 @@ export function renderBoard(state, ui, now) {
       addButton('new-application', 'Добавить отклик', { extraClass: 'btn--primary', focusKey: 'empty-new-application' }),
     );
   } else if (found.length === 0) {
-    content = emptyNote(`По запросу «${ui.search.trim()}» ничего не нашлось.`);
+    content = emptyNote(
+      `По запросу «${ui.search.trim()}» ничего не нашлось.`,
+      html`<button type="button" class="btn btn--ghost" data-action="clear-application-search">Очистить поиск</button>`,
+    );
   } else {
     content = html`
       <div class="board" data-scroll-key="board">
