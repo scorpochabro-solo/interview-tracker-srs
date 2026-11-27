@@ -1,0 +1,34 @@
+@startuml
+title Смена статуса отклика
+skinparam shadowing false
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 16
+skinparam sequenceArrowColor #40527A
+
+actor "Соискатель" as U
+boundary "Доска / карточка" as UI
+control "Контроллер (main.js)" as C
+participant "Модель (model.js)" as M
+database "localStorage" as S
+
+U -> UI : Выбирает новый статус отклика
+UI -> C : Событие change с ID и статусом
+C -> M : setStatus(состояние, ID, статус)
+alt отклик отсутствует или статус не распознан
+  M --> C : Ошибка модели
+  C --> UI : Показать сообщение об ошибке
+else статус принят
+  opt статус действительно изменился
+    M -> M : Изменить статус и добавить\nзапись с датой и временем
+  end
+  M --> C : Состояние после операции
+  C -> S : Сохранить снимок состояния
+  S --> C : Результат записи
+  C --> UI : Перерисовать колонки и карточку
+  alt запись успешна
+    C --> UI : Показать новый статус
+  else ошибка записи
+    C --> UI : Показать ошибку сохранения
+  end
+end
+@enduml
