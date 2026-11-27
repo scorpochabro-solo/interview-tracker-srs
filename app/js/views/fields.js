@@ -30,7 +30,7 @@ export function input({
   const id = `f-${name}`;
   return wrap(html`
     ${labelFor(id, label, required)}
-    <input class="field__control" id="${id}" name="${name}" type="${type}" value="${value ?? ''}"
+    <input class="field__control" id="${id}" name="${name}" type="${type}" value="${value ?? ''}" data-focus-key="${id}"
       autocomplete="${autocomplete}"
       ${required ? html`aria-required="true"` : ''}
       ${maxlength ? html`maxlength="${maxlength}"` : ''}
@@ -47,7 +47,7 @@ export function select({
   const id = `f-${name}`;
   return wrap(html`
     ${labelFor(id, label, required)}
-    <select class="field__control" id="${id}" name="${name}"
+    <select class="field__control" id="${id}" name="${name}" data-focus-key="${id}"
       ${required ? html`aria-required="true"` : ''}
       ${autofocus ? html`autofocus` : ''}
       aria-invalid="${error ? 'true' : 'false'}" ${describe(id, { error, hint })}>
@@ -62,7 +62,7 @@ export function textarea({ name, label, value, error, hint, maxlength, rows = 3 
   const id = `f-${name}`;
   return wrap(html`
     ${labelFor(id, label, false)}
-    <textarea class="field__control" id="${id}" name="${name}" rows="${rows}"
+    <textarea class="field__control" id="${id}" name="${name}" rows="${rows}" data-focus-key="${id}"
       ${maxlength ? html`maxlength="${maxlength}"` : ''}
       aria-invalid="${error ? 'true' : 'false'}" ${describe(id, { error, hint })}>${value ?? ''}</textarea>
     ${notes(id, { error, hint })}`, { error, wide: true });
